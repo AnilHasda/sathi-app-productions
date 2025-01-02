@@ -75,7 +75,7 @@ const LoginPage=()=>{
         <div className=" w-[300px] m-auto">
           <motion.div 
           className="text-center mb-5 text-emerald-900 font-bold"
-          initial={{x:"-100vw"}}
+          initial={{x:-50}}
           animate={{x:0}}
           transition={{delay:1.5,duration:.5,type:"spring",stiffness:100}}
           >Login Form</motion.div>
