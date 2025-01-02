@@ -11,6 +11,7 @@ import useAxiosInstance from "../CustomHooks/axios";
 import useGetInitialInfo from "../CustomHooks/useGetInitialInfo";
 import { ClipLoader} from 'react-spinners';
 import {initializeSocket} from "../../Redux/Slices/Socket";
+import {motion} from "framer-motion";
 const LoginPage=()=>{
   let [formData,setFormData]=useState({});
   let [loading,setLoading]=useState(false);
@@ -64,9 +65,20 @@ const LoginPage=()=>{
   }
   return (
     <>
-      <form className="w-auto pt-5"onSubmit={login}>
+      <motion.form 
+      className="w-auto pt-5"
+      initial={{opacity:0}}
+      animate={{opacity:1}}
+      transition={{delay:.5,duration:1}}
+      onSubmit={login}
+      >
         <div className=" w-[300px] m-auto">
-          <div className="text-center mb-5">Login Form</div>
+          <motion.div 
+          className="text-center mb-5 text-emerald-900 font-bold"
+          initial={{x:"-100vw"}}
+          animate={{x:0}}
+          transition={{delay:1.5,duration:.5,type:"spring",stiffness:100}}
+          >Login Form</motion.div>
         <label htmlFor="email">Email</label><br/>
         <input type="email"placeholder="Enter your email"id="email"className="h-10 w-full border border-[gray] rounded-sm mb-[10px] mt-[10px] text-sm pl-1"value={formData.email || ""}name="email"onChange={handleInput}required/><br/>
          <label htmlFor="password">Password</label><br/>
@@ -75,7 +87,7 @@ const LoginPage=()=>{
           {loading ? <ClipLoader size={20} color="#fff"/>:"submit"}
           </Button>
         </div>
-      </form>
+      </motion.form>
     </>
     )
 }

@@ -4,6 +4,7 @@ import { IoNotificationsCircleOutline } from "react-icons/io5";
 import { FaUserFriends } from "react-icons/fa";
 import {Link,useLocation} from "react-router-dom";
 import {useSelector} from "react-redux";
+import {motion} from "framer-motion";
 const Footer=()=>{
   let {totalNotifications:unreadNotifications}=useSelector(state=>state.notification);
   const location=useLocation();
@@ -11,8 +12,13 @@ const Footer=()=>{
     return location.pathname===path ? "text-[#f2f2f2]" : "text-[#f1f1f1]";
   }
   return(
-    <div className="h-16 w-full bg-slate-900 flex justify-between items-center text-[30px] text-[#f1f1f1] text-center border-b px-5 pr-8
-    mt-[100px] fixed bottom-0">
+    <motion.div 
+    className="h-16 w-full bg-slate-900 flex justify-between items-center text-[30px] text-[#f1f1f1] text-center border-b px-5 pr-8
+    mt-[100px] fixed bottom-0"
+    initial={{opacity:0}}
+    animate={{opacity:1}}
+    transition={{delay:1,duration:.5}}
+    >
          <div><TiHomeOutline/></div>
          <Link to="/people"><div className={activeLink("/people")}><FaUserFriends/></div></Link>
        <Link to="/"> 
@@ -24,7 +30,7 @@ const Footer=()=>{
           }
            <IoNotificationsCircleOutline className={activeLink("/notifications/getNotifications")}/>
            </div></Link>
-    </div>
+    </motion.div>
     )
 }
 export default Footer;

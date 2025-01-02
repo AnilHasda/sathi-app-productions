@@ -6,6 +6,7 @@ import Toast from "react-hot-toast";
 import useAxiosPost from "../CustomHooks/AxiosPost";
 import { ClipLoader} from 'react-spinners';
 import {useNavigate} from "react-router-dom";
+import {motion} from "framer-motion";
 const SignupPage=()=>{
   let [formData,setFormData]=useState({});
   let[previewImage,setPreviewImage]=useState(null);
@@ -54,9 +55,20 @@ const SignupPage=()=>{
   }
   return (
     <>
-      <form method="post"className="w-auto mb-[100px]"encType="multipart/form-data"onSubmit={registerUser}>
+      <motion.form 
+      method="post"
+      className="w-auto mb-[100px]"encType="multipart/form-data"
+      initial={{opacity:0}}
+      animate={{opacity:1}}
+      transition={{delay:1,duration:1}}
+      onSubmit={registerUser}>
         <div className=" w-[300px] m-auto mt-[80px]">
-         <div className="text-center mb-5">Signup Form</div>
+         <motion.div 
+         className="text-center mb-5 text-emerald-900 font-bold"
+         initial={{scale:.5}}
+         animate={{scale:1}}
+         transition={{delay:1.3,duration:.5}}
+         >Signup Form</motion.div>
          
          <label htmlFor="fname">First -name <p className="text-[red] text-xl inline">*</p></label><br/>
         <input type="text"placeholder="Enter your firstname"id="fname"className="h-10 w-full border border-[gray] rounded-sm mb-[10px] mt-[10px] text-sm pl-1"name="firstname"onChange={handleInput}required/><br/>
@@ -92,7 +104,7 @@ const SignupPage=()=>{
           }
          </Button>
         </div>
-      </form>
+      </motion.form>
     </>
     )
 }
