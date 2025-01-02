@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 const useAxiosInstance=()=>{
   const navigate=useNavigate();
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:5000/api/v1/', 
+  baseURL: 'https://sathi-app-backend.onrender.com/api/v1/', 
   withCredentials:true
 });
 axiosInstance.interceptors.response.use(
